@@ -1,0 +1,108 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  url?: string;
+}
+
+const { title = 'VeltRex Esports | Moroccan Competitive Gaming Team', description = 'Official website of VeltRex Esports. Discover our teams, matches, creators, and achievements.', image = '/og-default.svg', url = 'https://veltrexesports1-pixel.github.io' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={url + image} />
+  <meta property="og:url" content={url} />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={url + image} />
+  <!-- Canonical -->
+  <link rel="canonical" href={url} />
+  <!-- Language -->
+  <meta http-equiv="content-language" content="en" />
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsOrganization",
+    "name": "VeltRex Esports",
+    "url": "https://veltrexesports1-pixel.github.io",
+    "logo": "https://veltrexesports1-pixel.github.io/assets/images/logo.jpg",
+    "areaServed": "Morocco",
+    "sameAs": [
+      "https://x.com/VeltrexEsp",
+      "https://www.youtube.com/@Veltrexesports",
+      "https://www.instagram.com/veltrex_esports/",
+      "https://kick.com/veltrexesports",
+      "https://www.tiktok.com/@veltrexesports",
+      "https://discord.gg/A6qDDKSdf"
+    ]
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%237C3AED'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='18' font-weight='900' fill='white' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body class="font-body min-h-screen bg-[#070809] text-[#F5F5F5]">
+  <Header />
+  <slot />
+  <Footer />
+  <script>
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  </script>
+  <script>
+    // Scroll reveal
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const delay = entry.target.dataset.revealDelay || 0;
+            setTimeout(() => entry.target.classList.add('revealed'), delay);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    });
+    // Stat counter
+    document.querySelectorAll('[data-countup]').forEach(el => {
+      const target = parseFloat(el.dataset.countup);
+      const suffix = el.dataset.countupSuffix || '';
+      const duration = 2000;
+      const start = performance.now();
+      const animate = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * target);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(animate);
+      };
+      const obs = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          requestAnimationFrame(animate);
+          obs.unobserve(el);
+        }
+      });
+      obs.observe(el);
+    });
+  </script>
+</body>
+</html>

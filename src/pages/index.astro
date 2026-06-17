@@ -1,0 +1,370 @@
+---
+import Layout from '../layouts/Layout.astro';
+import matches from '../data/matches.json';
+
+const nextMatch = matches
+  .filter(m => m.status === 'upcoming')
+  .sort((a, b) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime())[0] || null;
+---
+
+<Layout title="VeltRex Esports | Moroccan Competitive Gaming Organization" description="VeltRex Esports is a Moroccan competitive gaming organization with teams in Valorant, League of Legends, and MLBB.">
+
+  <!-- ===== HERO ===== -->
+  <section class="relative min-h-screen flex items-center overflow-hidden grain-overlay">
+    <video autoplay muted loop playsinline poster="/assets/images/banner.png" class="absolute inset-0 h-full w-full object-cover">
+      <source src="/assets/videos/veltrex-hero.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-black/90"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+    <div class="absolute inset-0 opacity-40 bg-[radial-gradient(ellipse_at_center,rgba(134,36,229,0.3),transparent_70%)]"></div>
+    <div class="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-12 py-20">
+      <div class="max-w-4xl">
+        <p class="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[#8624E5] sm:text-sm sm:tracking-[0.35em]">
+          <span class="text-base">🇲🇦</span> Moroccan Esports Organization
+        </p>
+        <h1 class="font-heading text-7xl font-black uppercase leading-none sm:text-8xl lg:text-9xl text-balance">
+          <span data-reveal>VeltRex</span>
+          <br />
+          <span data-reveal data-reveal-delay="200" class="text-stroke-md text-[#8624E5]">Esports</span>
+        </h1>
+        <p class="mt-6 max-w-xl text-sm leading-7 text-white/70 sm:text-base sm:leading-8">
+          Always one more round, always one more effort. VeltRex Esports — the Moroccan team that never gives up, competing across Valorant, League of Legends and MLBB.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <a href="/teams" class="inline-flex items-center gap-2 border border-[#8624E5] bg-[#8624E5] px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] text-white transition duration-300 hover:bg-transparent hover:text-[#8624E5]">
+            Our Teams
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+          <a href="/achievements" class="inline-flex items-center gap-2 border border-white/20 px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] text-white transition duration-300 hover:border-[#8624E5]/50 hover:text-[#8624E5]">
+            Our Achievements
+          </a>
+        </div>
+      </div>
+      <div data-reveal class="mt-16 grid max-w-2xl grid-cols-3 gap-8 border-t border-white/10 pt-10">
+        <div><p class="font-heading text-3xl font-black text-white sm:text-4xl" data-countup="4">4</p><p class="mt-1 text-[11px] font-bold uppercase tracking-[0.16em] text-white/50 sm:text-xs">Teams</p></div>
+        <div><p class="font-heading text-3xl font-black text-white sm:text-4xl">—</p><p class="mt-1 text-[11px] font-bold uppercase tracking-[0.16em] text-white/50 sm:text-xs">Achievements</p></div>
+        <div><p class="font-heading text-3xl font-black text-white sm:text-4xl">3.3K+</p><p class="mt-1 text-[11px] font-bold uppercase tracking-[0.16em] text-white/50 sm:text-xs">Community</p></div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0b0c0d] to-transparent"></div>
+  </section>
+
+  <!-- ===== NEXT MATCH ===== -->
+  {nextMatch ? (
+    <section class="border-y border-white/10 bg-[radial-gradient(circle_at_center,rgba(134,36,229,0.06),transparent_60%),#0A0B0C] px-4 py-14 sm:px-6 lg:px-12 lg:py-16">
+      <div class="mx-auto max-w-7xl">
+        <p class="mb-4 text-xs uppercase tracking-[0.28em] text-[#8624E5] sm:text-sm">Up Next</p>
+        <div class="flex flex-col gap-6 border border-white/10 bg-white/[0.03] p-8 sm:flex-row sm:items-center sm:justify-between lg:p-10">
+          <div>
+            <h2 class="font-heading text-3xl font-black uppercase sm:text-4xl">{nextMatch.team} <span class="text-white/50">vs</span> {nextMatch.opponent}</h2>
+            <p class="mt-2 text-sm uppercase tracking-wider text-white/60">{nextMatch.event}</p>
+          </div>
+          <div class="shrink-0 text-center sm:text-right">
+            <span class="font-heading text-4xl font-black text-[#8624E5] sm:text-5xl" data-countdown={nextMatch.datetime}>--</span>
+            <p class="mt-1 text-[10px] uppercase tracking-[0.24em] text-white/40">until match</p>
+          </div>
+        </div>
+        <div class="mt-6 text-right">
+          <a href="/matches" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#8624E5] transition hover:text-white">
+            View All Matches
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  ) : (
+    <section class="border-y border-white/10 bg-[#0A0B0C] px-4 py-14 sm:px-6 lg:px-12 lg:py-16">
+      <div class="mx-auto max-w-7xl">
+        <p class="mb-4 text-xs uppercase tracking-[0.28em] text-[#8624E5] sm:text-sm">Up Next</p>
+        <div class="border border-white/10 bg-white/[0.03] p-8 text-center lg:p-10">
+          <p class="text-sm text-white/60">No upcoming matches scheduled — check back soon.</p>
+        </div>
+        <div class="mt-6 text-right">
+          <a href="/matches" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#8624E5] transition hover:text-white">
+            View All Matches
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ===== FEATURED TEAMS ===== -->
+  <section class="px-4 py-16 sm:px-6 lg:px-12 lg:py-18">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-8 flex items-end justify-between gap-4">
+        <div>
+          <p class="mb-2 text-xs uppercase tracking-[0.26em] text-[#8624E5] sm:text-sm sm:tracking-[0.3em]">Esports</p>
+          <h2 class="font-heading text-2xl font-black uppercase sm:text-3xl lg:text-4xl text-balance">Featured Teams</h2>
+        </div>
+        <a href="/teams" class="shrink-0 text-[11px] font-bold uppercase tracking-[0.18em] text-white/60 transition hover:text-[#8624E5] sm:text-xs sm:tracking-[0.2em]">See All</a>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <a href="/teams/valorant" data-reveal data-reveal-delay="100" class="group relative overflow-hidden border border-white/10 bg-white/[0.03] transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/50 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(134,36,229,0.12)] hover-tilt hover-glow">
+          <div class="relative">
+            <img src="/assets/images/game-valorant.jpg" alt="Valorant team" class="h-[320px] w-full object-cover sm:h-[340px]" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-transparent"></div>
+            <div class="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 bg-[radial-gradient(circle_at_center,rgba(134,36,229,0.16),transparent_58%)]"></div>
+          </div>
+          <div class="absolute inset-x-0 bottom-0 z-20 p-5">
+            <h3 class="text-2xl font-black uppercase text-white">Valorant</h3>
+            <p class="mt-2 line-clamp-2 text-sm text-white/70">Competitive roster under VeltRex Esports.</p>
+            <div class="mt-4 h-[2px] w-0 bg-[#8624E5] transition-all duration-300 group-hover:w-16"></div>
+          </div>
+        </a>
+        <a href="/teams/valorant-gc" data-reveal data-reveal-delay="200" class="group relative overflow-hidden border border-white/10 bg-white/[0.03] transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/50 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(134,36,229,0.12)] hover-tilt hover-glow">
+          <div class="relative">
+            <img src="/assets/images/game-valorant-gc.jpg" alt="Valorant GC team" class="h-[320px] w-full object-cover sm:h-[340px]" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-transparent"></div>
+            <div class="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 bg-[radial-gradient(circle_at_center,rgba(134,36,229,0.16),transparent_58%)]"></div>
+          </div>
+          <div class="absolute inset-x-0 bottom-0 z-20 p-5">
+            <h3 class="text-2xl font-black uppercase text-white">Valorant GC</h3>
+            <p class="mt-2 line-clamp-2 text-sm text-white/70">Competitive roster under VeltRex Esports.</p>
+            <div class="mt-4 h-[2px] w-0 bg-[#8624E5] transition-all duration-300 group-hover:w-16"></div>
+          </div>
+        </a>
+        <a href="/teams/league-of-legends" data-reveal data-reveal-delay="300" class="group relative overflow-hidden border border-white/10 bg-white/[0.03] transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/50 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(134,36,229,0.12)] hover-tilt hover-glow">
+          <div class="relative">
+            <img src="/assets/images/game-lol.jpg" alt="League of Legends team" class="h-[320px] w-full object-cover sm:h-[340px]" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-transparent"></div>
+            <div class="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 bg-[radial-gradient(circle_at_center,rgba(134,36,229,0.16),transparent_58%)]"></div>
+          </div>
+          <div class="absolute inset-x-0 bottom-0 z-20 p-5">
+            <h3 class="text-2xl font-black uppercase text-white">League of Legends</h3>
+            <p class="mt-2 line-clamp-2 text-sm text-white/70">Competitive roster under VeltRex Esports.</p>
+            <div class="mt-4 h-[2px] w-0 bg-[#8624E5] transition-all duration-300 group-hover:w-16"></div>
+          </div>
+        </a>
+        <a href="/teams/mlbb" data-reveal data-reveal-delay="400" class="group relative overflow-hidden border border-white/10 bg-white/[0.03] transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/50 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(134,36,229,0.12)] hover-tilt hover-glow">
+          <div class="relative">
+            <img src="/assets/images/game-mlbb.jpg" alt="MLBB Female team" class="h-[320px] w-full object-cover sm:h-[340px]" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-transparent"></div>
+            <div class="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 bg-[radial-gradient(circle_at_center,rgba(134,36,229,0.16),transparent_58%)]"></div>
+          </div>
+          <div class="absolute inset-x-0 bottom-0 z-20 p-5">
+            <h3 class="text-2xl font-black uppercase text-white">MLBB Female</h3>
+            <p class="mt-2 line-clamp-2 text-sm text-white/70">Competitive roster under VeltRex Esports.</p>
+            <div class="mt-4 h-[2px] w-0 bg-[#8624E5] transition-all duration-300 group-hover:w-16"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CREATORS ===== -->
+  <section class="border-y border-white/10 bg-white/[0.02] px-4 py-16 sm:px-6 lg:px-12 lg:py-18">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-8 flex items-end justify-between gap-4">
+        <div>
+          <p class="mb-2 text-xs uppercase tracking-[0.26em] text-[#8624E5] sm:text-sm sm:tracking-[0.3em]">Media Power</p>
+          <h2 class="font-heading text-2xl font-black uppercase sm:text-3xl lg:text-4xl text-balance">Content Creators</h2>
+        </div>
+        <a href="/creators" class="shrink-0 text-[11px] font-bold uppercase tracking-[0.18em] text-white/60 transition hover:text-[#8624E5] sm:text-xs sm:tracking-[0.2em]">See All</a>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <div data-reveal data-reveal-delay="100" class="group relative overflow-hidden border border-white/10 bg-white/[0.03] transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/50 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(134,36,229,0.15)] hover-tilt hover-glow">
+          <div class="relative">
+            <img src="/assets/images/creator-1.jpg" alt="Creator photo" class="h-[420px] w-full object-cover sm:h-[430px]" />
+            <div class="absolute inset-0 bg-black/35 transition duration-300 group-hover:bg-black/20"></div>
+            <div class="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 bg-[radial-gradient(circle_at_center,rgba(134,36,229,0.18),transparent_60%)]"></div>
+          </div>
+          <div class="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/95 via-black/75 to-transparent px-5 pb-5 pt-24">
+            <h3 class="text-2xl font-black uppercase text-white">VeltRex Pro</h3>
+            <p class="mt-2 text-xs uppercase tracking-[0.2em] text-[#8624E5]">Content Creator</p>
+            <p class="mt-2 text-sm text-white/75">Youtube | 760k+ Total Followers</p>
+
+          </div>
+        </div>
+        <div data-reveal data-reveal-delay="200" class="group relative overflow-hidden border border-white/10 bg-white/[0.03] transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/50 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(134,36,229,0.15)] hover-tilt hover-glow">
+          <div class="relative">
+            <img src="/assets/images/creator-2.jpg" alt="Creator photo" class="h-[420px] w-full object-cover sm:h-[430px]" />
+            <div class="absolute inset-0 bg-black/35 transition duration-300 group-hover:bg-black/20"></div>
+            <div class="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 bg-[radial-gradient(circle_at_center,rgba(134,36,229,0.18),transparent_60%)]"></div>
+          </div>
+          <div class="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/95 via-black/75 to-transparent px-5 pb-5 pt-24">
+            <h3 class="text-2xl font-black uppercase text-white">ApexGamer</h3>
+            <p class="mt-2 text-xs uppercase tracking-[0.2em] text-[#8624E5]">Content Creator</p>
+            <p class="mt-2 text-sm text-white/75">438K Total Followers</p>
+
+          </div>
+        </div>
+        <div data-reveal data-reveal-delay="300" class="group relative overflow-hidden border border-white/10 bg-white/[0.03] transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/50 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(134,36,229,0.15)] hover-tilt hover-glow">
+          <div class="relative">
+            <img src="/assets/images/creator-3.jpg" alt="Creator photo" class="h-[420px] w-full object-cover sm:h-[430px]" />
+            <div class="absolute inset-0 bg-black/35 transition duration-300 group-hover:bg-black/20"></div>
+            <div class="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 bg-[radial-gradient(circle_at_center,rgba(134,36,229,0.18),transparent_60%)]"></div>
+          </div>
+          <div class="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/95 via-black/75 to-transparent px-5 pb-5 pt-24">
+            <h3 class="text-2xl font-black uppercase text-white">NexusPlays</h3>
+            <p class="mt-2 text-xs uppercase tracking-[0.2em] text-[#8624E5]">Content Creator</p>
+            <p class="mt-2 text-sm text-white/75">Instagram | 28.7K Followers</p>
+          </div>
+        </div>
+        <div data-reveal data-reveal-delay="400" class="group relative overflow-hidden border border-white/10 bg-white/[0.03] transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/50 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(134,36,229,0.15)] hover-tilt hover-glow">
+          <div class="relative">
+            <img src="/assets/images/creator-4.jpg" alt="Creator photo" class="h-[420px] w-full object-cover sm:h-[430px]" />
+            <div class="absolute inset-0 bg-black/35 transition duration-300 group-hover:bg-black/20"></div>
+            <div class="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 bg-[radial-gradient(circle_at_center,rgba(134,36,229,0.18),transparent_60%)]"></div>
+          </div>
+          <div class="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/95 via-black/75 to-transparent px-5 pb-5 pt-24">
+            <h3 class="text-2xl font-black uppercase text-white">FuryVortex</h3>
+            <p class="mt-2 text-xs uppercase tracking-[0.2em] text-[#8624E5]">Content Creator</p>
+            <p class="mt-2 text-sm text-white/75">44k+ Total Followers</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACHIEVEMENTS ===== -->
+  <section class="px-4 py-16 sm:px-6 lg:px-12 lg:py-18">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-8 flex items-end justify-between gap-4">
+        <div>
+          <p class="mb-2 text-xs uppercase tracking-[0.26em] text-[#8624E5] sm:text-sm sm:tracking-[0.3em]">Results</p>
+          <h2 class="font-heading text-2xl font-black uppercase sm:text-3xl lg:text-4xl text-balance">Latest Achievements</h2>
+        </div>
+        <a href="/achievements" class="shrink-0 text-[11px] font-bold uppercase tracking-[0.18em] text-white/60 transition hover:text-[#8624E5] sm:text-xs sm:tracking-[0.2em]">See All</a>
+      </div>
+      <div class="space-y-2">
+        <div class="group grid gap-3 border-b border-white/10 py-5 transition duration-300 hover:bg-white/[0.02] md:grid-cols-[130px_130px_160px_160px_1fr] md:items-center lg:grid-cols-[140px_140px_180px_180px_1fr]">
+          <div class="text-sm text-white/50">24 May 2026</div>
+          <div class="flex items-center gap-3 font-bold uppercase text-blue-400">
+            <span class="text-xl transition duration-300 group-hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C5 4 6 3 6 3s1 1 1.5 1a2.5 2.5 0 0 1 0 5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C18 4 17 3 17 3s-1 1-1.5 1a2.5 2.5 0 0 0 0 5H18"></path><path d="M4 22h16"></path><path d="M10 22V2h4v20"></path></svg>
+            </span>
+            <span>4th Place</span>
+          </div>
+          <div class="text-sm font-semibold uppercase text-[#8624E5]">FC26</div>
+          <div class="text-sm font-semibold uppercase text-white/80">EA FC 26</div>
+          <div class="font-bold text-white">MGE 2026 — EA FC 26 — Finals</div>
+        </div>
+        <div class="group grid gap-3 border-b border-white/10 py-5 transition duration-300 hover:bg-white/[0.02] md:grid-cols-[130px_130px_160px_160px_1fr] md:items-center lg:grid-cols-[140px_140px_180px_180px_1fr]">
+          <div class="text-sm text-white/50">22 May 2026</div>
+          <div class="flex items-center gap-3 font-bold uppercase text-amber-500">
+            <span class="text-xl transition duration-300 group-hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+            </span>
+            <span>3rd</span>
+          </div>
+          <div class="text-sm font-semibold uppercase text-[#8624E5]">Fortnite</div>
+          <div class="text-sm font-semibold uppercase text-white/80">Fortnite</div>
+          <div class="font-bold text-white">MGE 2026 — Fortnite — Finals</div>
+        </div>
+        <div class="group grid gap-3 border-b border-white/10 py-5 transition duration-300 hover:bg-white/[0.02] md:grid-cols-[130px_130px_160px_160px_1fr] md:items-center lg:grid-cols-[140px_140px_180px_180px_1fr]">
+          <div class="text-sm text-white/50">15 May 2026</div>
+          <div class="flex items-center gap-3 font-bold uppercase text-white/50">
+            <span class="text-xl transition duration-300 group-hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </span>
+            <span>Top 32</span>
+          </div>
+          <div class="text-sm font-semibold uppercase text-[#8624E5]">Valorant GC</div>
+          <div class="text-sm font-semibold uppercase text-white/80">Valorant</div>
+          <div class="font-bold text-white">Game Changers EMEA Cash Cup #4</div>
+        </div>
+        <div class="group grid gap-3 border-b border-white/10 py-5 transition duration-300 hover:bg-white/[0.02] md:grid-cols-[130px_130px_160px_160px_1fr] md:items-center lg:grid-cols-[140px_140px_180px_180px_1fr]">
+          <div class="text-sm text-white/50">10 May 2026</div>
+          <div class="flex items-center gap-3 font-bold uppercase text-blue-400">
+            <span class="text-xl transition duration-300 group-hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C5 4 6 3 6 3s1 1 1.5 1a2.5 2.5 0 0 1 0 5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C18 4 17 3 17 3s-1 1-1.5 1a2.5 2.5 0 0 0 0 5H18"></path><path d="M4 22h16"></path><path d="M10 22V2h4v20"></path></svg>
+            </span>
+            <span>Top 5</span>
+          </div>
+          <div class="text-sm font-semibold uppercase text-[#8624E5]">Valorant</div>
+          <div class="text-sm font-semibold uppercase text-white/80">Valorant</div>
+          <div class="font-bold text-white">MGE 2026 — Playins</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONNECT ===== -->
+  <section class="border-t border-white/10 bg-[radial-gradient(circle_at_top,rgba(134,36,229,0.08),transparent_38%),linear-gradient(90deg,#0b0c0d_0%,#121316_50%,#17181b_100%)] px-4 py-14 sm:px-6 lg:px-12 lg:py-18">
+    <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+      <div class="relative overflow-hidden border border-white/10 bg-white/[0.02] px-6 py-10 sm:px-10 sm:py-14">
+        <h2 class="font-heading pointer-events-none absolute left-6 top-1/2 -translate-y-1/2 text-[54px] font-black uppercase leading-none text-transparent opacity-20 [-webkit-text-stroke:1px_rgba(255,255,255,0.12)] sm:left-10 sm:text-[110px] lg:text-[130px]">Follow</h2>
+        <div class="relative z-10">
+          <p class="mb-3 text-xs uppercase tracking-[0.3em] text-[#8624E5] sm:text-sm">Stay Connected</p>
+          <p class="max-w-xl text-sm leading-7 text-white/72 sm:text-base sm:leading-8">
+            Follow VeltRex Across Our Main Platforms To Track Team Results, Creator Content, Community Updates, And Upcoming Activations.
+          </p>
+        </div>
+      </div>
+      <div>
+        <p class="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-white/55">@VeltRex Esports</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="https://x.com/VeltrexEsp" target="_blank" class="flex h-14 w-14 items-center justify-center border border-white/10 bg-white/[0.03] text-white transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/40 hover:text-[#8624E5]" aria-label="x"><span class="text-sm font-black">X</span></a>
+          <a href="https://www.instagram.com/veltrex_esports/" target="_blank" class="flex h-14 w-14 items-center justify-center border border-white/10 bg-white/[0.03] text-white transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/40 hover:text-[#8624E5]" aria-label="instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+          </a>
+          <a href="https://www.youtube.com/@Veltrexesports" target="_blank" class="flex h-14 w-14 items-center justify-center border border-white/10 bg-white/[0.03] text-white transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/40 hover:text-[#8624E5]" aria-label="youtube">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg>
+          </a>
+          <a href="https://discord.gg/A6qDDKSdf" target="_blank" class="flex h-14 w-14 items-center justify-center border border-white/10 bg-white/[0.03] text-white transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/40 hover:text-[#8624E5]" aria-label="discord">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PARTNERS ===== -->
+  <section id="partners" data-reveal class="border-t border-white/10 bg-[radial-gradient(circle_at_top,rgba(134,36,229,0.07),transparent_30%),#070809] px-4 py-16 sm:px-6 lg:px-12 lg:py-20">
+    <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.22em] text-[#8624E5]">Trusted By</p>
+        <h2 class="font-heading mt-3 text-4xl font-black uppercase leading-none sm:text-6xl">
+          Our <span class="text-[#8624E5]">Partners</span>
+        </h2>
+        <p class="mt-5 max-w-md text-sm leading-7 text-white/72 sm:text-base sm:leading-8">
+          Meet the brands that support VeltRex through Esports, Community Growth, Creator Activations, And Gaming Culture.
+        </p>
+        <div class="mt-8 max-w-md border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.03)_0%,rgba(255,255,255,0.015)_100%)] p-8 sm:p-10">
+          <h3 class="text-3xl font-black uppercase leading-tight text-white">Become A Partner Of VeltRex Esports</h3>
+          <a href="/contact" class="mt-8 inline-flex items-center gap-2 border border-[#8624E5] bg-[#8624E5] px-6 py-4 text-xs font-bold uppercase tracking-[0.2em] text-white transition duration-300 hover:bg-transparent hover:text-[#8624E5]">
+            Get In Touch
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3">
+        <div class="flex min-h-[90px] items-center justify-center border border-white/5 bg-white/[0.02] px-4 py-6 transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/25 hover:bg-white/[0.04]">
+          <span class="font-black uppercase tracking-[0.1em] text-white/40 text-sm">Qasbah Labs</span>
+        </div>
+        <div class="flex min-h-[90px] items-center justify-center border border-white/5 bg-white/[0.02] px-4 py-6 transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/25 hover:bg-white/[0.04]">
+          <span class="font-black uppercase tracking-[0.1em] text-white/40 text-sm">PlayerZ Maroc</span>
+        </div>
+        <div class="flex min-h-[90px] items-center justify-center border border-white/5 bg-white/[0.02] px-4 py-6 transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/25 hover:bg-white/[0.04]">
+          <span class="font-black uppercase tracking-[0.1em] text-white/40 text-sm">KingSpec</span>
+        </div>
+        <div class="flex min-h-[90px] items-center justify-center border border-white/5 bg-white/[0.02] px-4 py-6 transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/25 hover:bg-white/[0.04]">
+          <span class="font-black uppercase tracking-[0.1em] text-white/40 text-sm">ATK Gear</span>
+        </div>
+        <div class="flex min-h-[90px] items-center justify-center border border-white/5 bg-white/[0.02] px-4 py-6 transition duration-300 hover:-translate-y-1 hover:border-[#8624E5]/25 hover:bg-white/[0.04]">
+          <span class="font-black uppercase tracking-[0.1em] text-white/40 text-sm">GKOI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script>
+  function updateCountdowns() {
+    document.querySelectorAll('[data-countdown]').forEach(el => {
+      const target = new Date(el.dataset.countdown).getTime();
+      const now = Date.now();
+      const diff = target - now;
+      if (diff <= 0) { el.textContent = 'LIVE'; return; }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      el.textContent = `${d}d ${h}h ${m}m ${s}s`;
+    });
+  }
+  setInterval(updateCountdowns, 1000);
+  updateCountdowns();
+</script>
+
+</Layout>

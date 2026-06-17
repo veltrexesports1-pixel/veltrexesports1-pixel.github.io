@@ -1,0 +1,44 @@
+[
+  {
+    "id": "val-duelist",
+    "game": "Valorant",
+    "role": "Duelist",
+    "requirements": ["Immortal 3+ peak rank", "18+ years old", "English or Arabic speaking", "Available for daily scrims 4pm-9pm GMT+1", "Own microphone and stable internet"],
+    "status": "open"
+  },
+  {
+    "id": "val-igl",
+    "game": "Valorant",
+    "role": "In-Game Leader",
+    "requirements": ["Immortal 2+ peak rank", "Previous IGL experience", "18+ years old", "Strong communication in English or Arabic", "Available for daily scrims"],
+    "status": "open"
+  },
+  {
+    "id": "val-gc-flex",
+    "game": "Valorant GC",
+    "role": "Flex Player",
+    "requirements": ["Female or non-binary", "Diamond 3+ peak rank", "18+ years old", "Flexible role pool (minimum 3 agents)", "Available for team practices"],
+    "status": "open"
+  },
+  {
+    "id": "lol-mid",
+    "game": "League of Legends",
+    "role": "Mid Laner",
+    "requirements": ["Diamond 2+ peak rank", "18+ years old", "English speaking", "Champion pool of 5+ meta picks", "Available for daily scrims and soloQ reviews"],
+    "status": "open"
+  },
+  {
+    "id": "lol-support",
+    "game": "League of Legends",
+    "role": "Support",
+    "requirements": ["Diamond 2+ peak rank", "18+ years old", "Strong shotcalling ability", "English speaking", "Available for team practices"],
+    "status": "open"
+  },
+  {
+    "id": "mlbb-mid",
+    "game": "MLBB Female",
+    "role": "Mid Laner",
+    "requirements": ["Mythic Honor+ rank", "Female", "18+ years old", "English or Arabic speaking", "Available for daily scrims"],
+    "status": "open"
+  }
+]

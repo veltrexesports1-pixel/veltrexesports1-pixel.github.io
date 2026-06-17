@@ -1,0 +1,67 @@
+[
+  {
+    "id": "mge-val-2026",
+    "team": "Valorant",
+    "game": "Valorant",
+    "opponent": "MGE 2026",
+    "datetime": "2025-06-10T14:00:00+01:00",
+    "status": "completed",
+    "score": "2-1",
+    "result": "win",
+    "event": "MGE 2026 Valorant",
+    "stream": null,
+    "vod": null
+  },
+  {
+    "id": "mge-lol-2026",
+    "team": "League of Legends",
+    "game": "League of Legends",
+    "opponent": "MGE 2026",
+    "datetime": "2025-06-08T14:00:00+01:00",
+    "status": "completed",
+    "score": "1-2",
+    "result": "loss",
+    "event": "MGE 2026 LoL",
+    "stream": null,
+    "vod": null
+  },
+  {
+    "id": "upcoming-val-scrim-1",
+    "team": "Valorant",
+    "game": "Valorant",
+    "opponent": "TBD",
+    "datetime": "2026-07-15T18:00:00+01:00",
+    "status": "upcoming",
+    "score": null,
+    "result": null,
+    "event": "Open Qualifier Preparation",
+    "stream": null,
+    "vod": null
+  },
+  {
+    "id": "upcoming-lol-scrim-1",
+    "team": "League of Legends",
+    "game": "League of Legends",
+    "opponent": "TBD",
+    "datetime": "2026-07-20T18:00:00+01:00",
+    "status": "upcoming",
+    "score": null,
+    "result": null,
+    "event": "Team Synergy Scrims",
+    "stream": null,
+    "vod": null
+  },
+  {
+    "id": "upcoming-mlbb-scrim-1",
+    "team": "MLBB Female",
+    "game": "MLBB",
+    "opponent": "TBD",
+    "datetime": "2026-07-22T16:00:00+01:00",
+    "status": "upcoming",
+    "score": null,
+    "result": null,
+    "event": "Women's League Preparation",
+    "stream": null,
+    "vod": null
+  }
+]

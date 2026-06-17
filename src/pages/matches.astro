@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import matches from '../data/matches.json';
+
+const upcoming = matches
+  .filter(m => m.status === 'upcoming')
+  .sort((a, b) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime());
+
+const completed = matches
+  .filter(m => m.status === 'completed')
+  .sort((a, b) => new Date(b.datetime).getTime() - new Date(a.datetime).getTime());
+
+function formatDate(iso) {
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+---
+
+<Layout title="VeltRex Esports Matches & Results" description="Upcoming scrims and match results for VeltRex Esports teams.">
+
+  <section class="border-b border-white/10 px-6 py-16 lg:px-12">
+    <div class="mx-auto max-w-7xl text-center">
+      <p class="mb-3 text-sm uppercase tracking-[0.3em] text-[#8624E5]">competitive schedule</p>
+      <h1 class="font-heading text-4xl font-black uppercase sm:text-6xl text-balance">Matches</h1>
+      <p class="mx-auto mt-5 max-w-3xl text-white/65">Track upcoming and past matches across all VeltRex rosters.</p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-20 lg:px-12">
+    <div class="mb-10 flex items-center gap-3">
+      <span class="inline-block h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+      <h2 class="font-heading text-2xl font-black uppercase text-balance">Upcoming Scrims &amp; Qualifiers</h2>
+    </div>
+    {upcoming.length > 0 ? (
+      <div class="space-y-4">
+        {upcoming.map(m => (
+          <div class="flex flex-col gap-3 border border-white/10 bg-white/[0.03] p-6 transition hover:border-[#8624E5]/30 sm:flex-row sm:items-center sm:justify-between">
+            <div class="min-w-0">
+              <h3 class="text-lg font-bold uppercase">{m.team} vs. {m.opponent}</h3>
+              <p class="mt-1 text-xs uppercase tracking-wider text-white/50">{m.event}</p>
+              <p class="mt-2 text-xs text-white/40">{formatDate(m.datetime)}</p>
+            </div>
+            <div class="shrink-0 text-right">
+              <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#8624E5]" data-countdown={m.datetime}>--</span>
+              <p class="mt-1 text-[10px] uppercase tracking-wider text-white/35">until match</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="border border-white/10 bg-white/[0.03] p-8 text-center">
+        <p class="text-sm text-white/60">No upcoming matches scheduled — check back soon.</p>
+      </div>
+    )}
+
+    <div class="mt-16 mb-10 flex items-center gap-3">
+      <span class="inline-block h-2 w-2 rounded-full bg-blue-500"></span>
+      <h2 class="font-heading text-2xl font-black uppercase text-balance">Results</h2>
+    </div>
+    {completed.length > 0 ? (
+      <div class="space-y-4">
+        {completed.map(m => (
+          <div class="flex flex-col gap-3 border border-white/10 bg-white/[0.03] p-6 transition hover:border-[#8624E5]/30 sm:flex-row sm:items-center sm:justify-between">
+            <div class="min-w-0">
+              <h3 class="text-lg font-bold uppercase">{m.team} vs. {m.opponent}</h3>
+              <p class="mt-1 text-xs uppercase tracking-wider text-white/50">{m.event}</p>
+              <p class="mt-2 text-xs text-white/40">{formatDate(m.datetime)}</p>
+            </div>
+            <div class="shrink-0 text-right">
+              <p class={`text-lg font-black uppercase ${m.result === 'win' ? 'text-green-400' : 'text-red-400'}`}>{m.score}</p>
+              <p class={`mt-1 text-[10px] uppercase tracking-wider ${m.result === 'win' ? 'text-green-400/80' : 'text-red-400/80'}`}>{m.result}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="border border-white/10 bg-white/[0.03] p-8 text-center">
+        <p class="text-sm text-white/60">No completed matches yet. Results will appear here once we compete.</p>
+      </div>
+    )}
+  </section>
+
+</Layout>
+
+<script>
+  function updateCountdowns() {
+    document.querySelectorAll('[data-countdown]').forEach(el => {
+      const target = new Date(el.dataset.countdown).getTime();
+      const now = Date.now();
+      const diff = target - now;
+      if (diff <= 0) { el.textContent = 'LIVE'; return; }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      el.textContent = `${d}d ${h}h ${m}m ${s}s`;
+    });
+  }
+  setInterval(updateCountdowns, 1000);
+  updateCountdowns();
+</script>
