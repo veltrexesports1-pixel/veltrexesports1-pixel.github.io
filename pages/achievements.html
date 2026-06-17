@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Achievements — VeltRex Esports</title>
+  <meta name="description" content="VeltRex Esports trophy case and competitive milestones." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%237C3AED'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='18' font-weight='900' fill='white' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script>
+    tailwind.config = { theme: { extend: { colors: { brand: '#8624E5' } } } }
+  </script>
+</head>
+<body class="font-body min-h-screen bg-[#070809] text-[#F5F5F5]">
+  <header class="sticky top-0 z-50 border-b border-white/5 bg-black/70 backdrop-blur-xl shadow-[0_4px_30px_rgba(134,36,229,0.1)]">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-12">
+      <a class="shrink-0" href="../index.html"><div class="flex items-center gap-3"><img src="../assets/images/logo.jpg" alt="VeltRex" class="h-12 w-12 rounded object-cover sm:h-14 sm:w-14" /><div><p class="font-heading text-2xl font-black uppercase tracking-[0.12em]">VeltRex</p><p class="text-sm uppercase tracking-[0.32em] text-white/60">Esports</p></div></div></a>
+      <nav class="hidden items-center gap-7 lg:flex">
+        <a class="group relative text-sm font-black uppercase tracking-[0.18em] transition duration-300 text-white/75 hover:text-white" href="../index.html"><span class="relative z-10">home</span><span class="absolute left-0 -bottom-3 h-[2px] bg-brand transition-all duration-300 w-0 group-hover:w-full"></span></a>
+        <div class="group relative">
+          <button type="button" class="relative flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] transition duration-300 text-white/75 hover:text-white"><span class="relative z-10">about</span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition duration-300 group-hover:rotate-180"><path d="m6 9 6 6 6-6"></path></svg><span class="absolute left-0 -bottom-3 h-[2px] bg-brand transition-all duration-300 w-0 group-hover:w-full"></span></button>
+          <div class="absolute left-0 top-full h-4 w-full"></div>
+          <div class="invisible absolute left-0 top-full mt-4 min-w-[250px] border border-white/10 bg-[#101114] opacity-0 shadow-[0_18px_45px_rgba(0,0,0,0.45)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
+            <a class="block border-b border-white/5 px-5 py-4 text-xs font-bold uppercase tracking-[0.16em] transition duration-200 last:border-b-0 text-white/75 hover:bg-white/[0.03] hover:text-white" href="about.html">about vel trex</a>
+            <a class="block border-b border-white/5 px-5 py-4 text-xs font-bold uppercase tracking-[0.16em] transition duration-200 last:border-b-0 text-white/75 hover:bg-white/[0.03] hover:text-white" href="../index.html#partners">partners</a>
+            <a class="block border-b border-white/5 px-5 py-4 text-xs font-bold uppercase tracking-[0.16em] transition duration-200 last:border-b-0 text-white/75 hover:bg-white/[0.03] hover:text-white" href="brand.html">brand guidelines</a>
+          </div>
+        </div>
+        <div class="group relative">
+          <button type="button" class="relative flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] transition duration-300 text-white/75 hover:text-white"><span class="relative z-10">esports</span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition duration-300 group-hover:rotate-180"><path d="m6 9 6 6 6-6"></path></svg><span class="absolute left-0 -bottom-3 h-[2px] bg-brand transition-all duration-300 w-0 group-hover:w-full"></span></button>
+          <div class="absolute left-0 top-full h-4 w-full"></div>
+          <div class="invisible absolute left-0 top-full mt-4 min-w-[250px] border border-white/10 bg-[#101114] opacity-0 shadow-[0_18px_45px_rgba(0,0,0,0.45)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
+            <a class="block border-b border-white/5 px-5 py-4 text-xs font-bold uppercase tracking-[0.16em] transition duration-200 last:border-b-0 text-white/75 hover:bg-white/[0.03] hover:text-white" href="teams.html">teams</a>
+            <a class="block border-b border-white/5 px-5 py-4 text-xs font-bold uppercase tracking-[0.16em] transition duration-200 last:border-b-0 text-white/75 hover:bg-white/[0.03] hover:text-white" href="matches.html">matches</a>
+            <a class="block border-b border-white/5 px-5 py-4 text-xs font-bold uppercase tracking-[0.16em] transition duration-200 last:border-b-0 bg-white/[0.04] text-brand" href="achievements.html">achievements</a>
+          </div>
+        </div>
+        <a class="group relative text-sm font-black uppercase tracking-[0.18em] transition duration-300 text-white/75 hover:text-white" href="creators.html"><span class="relative z-10">our creators</span><span class="absolute left-0 -bottom-3 h-[2px] bg-brand transition-all duration-300 w-0 group-hover:w-full"></span></a>
+        <a class="group relative text-sm font-black uppercase tracking-[0.18em] transition duration-300 text-white/75 hover:text-white" href="contact.html"><span class="relative z-10">contact</span><span class="absolute left-0 -bottom-3 h-[2px] bg-brand transition-all duration-300 w-0 group-hover:w-full"></span></a>
+      </nav>
+      <button type="button" class="inline-flex items-center justify-center border border-white/10 bg-white/[0.03] p-2 text-white transition hover:border-brand/40 hover:text-brand lg:hidden" aria-label="toggle menu"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button>
+    </div>
+  </header>
+
+  <section class="border-b border-white/10 px-6 py-16 lg:px-12">
+    <div class="mx-auto max-w-7xl text-center">
+      <p class="mb-3 text-sm uppercase tracking-[0.3em] text-brand">trophy case</p>
+      <h1 class="font-heading text-4xl font-black uppercase sm:text-6xl text-balance">Achievements</h1>
+      <p class="mx-auto mt-5 max-w-3xl text-white/65">Milestones and competitive results across all VeltRex rosters.</p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-20 lg:px-12">
+    <div class="text-center">
+      <div class="mb-8 inline-flex h-20 w-20 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8624E5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C5 4 6 3 6 3s1 1 1.5 1a2.5 2.5 0 0 1 0 5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C18 4 17 3 17 3s-1 1-1.5 1a2.5 2.5 0 0 0 0 5H18"/><path d="M4 22h16"/><path d="M10 22V2h4v20"/></svg>
+      </div>
+      <h2 class="font-heading text-3xl font-black uppercase text-balance"><span class="text-[#8624E5]">Our</span> <span class="text-stroke-sm text-white">Journey</span> <span class="text-stroke-sm text-white">Begins</span></h2>
+      <p class="mx-auto mt-4 max-w-xl text-sm leading-7 text-white/60 sm:text-base">VeltRex Esports was founded to build Morocco's next generation of competitive talent. We're currently scrimming, bootcamping, and preparing for upcoming qualifiers.</p>
+      <div class="mx-auto mt-10 grid max-w-2xl gap-4 sm:grid-cols-3">
+        <div class="border border-white/10 bg-white/[0.03] p-6"><p class="font-heading text-3xl font-black text-[#8624E5]">1</p><p class="mt-2 text-xs uppercase tracking-wider text-white/50">Month Old</p></div>
+        <div class="border border-white/10 bg-white/[0.03] p-6"><p class="font-heading text-3xl font-black text-[#8624E5]">4</p><p class="mt-2 text-xs uppercase tracking-wider text-white/50">Competitive Teams</p></div>
+        <div class="border border-white/10 bg-white/[0.03] p-6"><p class="font-heading text-3xl font-black text-[#8624E5]">—</p><p class="mt-2 text-xs uppercase tracking-wider text-white/50">Trophies — Yet</p></div>
+      </div>
+      <p class="mt-10 text-sm text-white/50">Achievements will appear here as we compete. Stay connected.</p>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/10 bg-[#070809] px-4 py-14 text-[#F5F5F5] sm:px-6 lg:px-12">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
+        <div><div class="mb-5 flex items-center gap-4"><img src="../assets/images/logo.jpg" alt="VeltRex" class="h-12 w-12 rounded object-cover" /><div><p class="font-heading text-2xl font-black uppercase tracking-[0.12em]">VeltRex</p><p class="text-sm uppercase tracking-[0.32em] text-white/60">Esports</p></div></div><p class="max-w-sm text-sm leading-7 text-white/68">Competitive Teams, Creator Power, Community Growth, And The Future Of Esports In Morocco.</p></div>
+        <div><p class="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-brand">Navigation</p><div class="space-y-3 text-sm text-white/80"><a class="block transition hover:text-brand" href="../index.html">Home</a><a class="block transition hover:text-brand" href="about.html">About VeltRex</a><a class="block transition hover:text-brand" href="teams.html">Teams</a><a class="block transition hover:text-brand" href="creators.html">Our Creators</a><a class="block transition hover:text-brand" href="matches.html">Matches</a><a class="block transition hover:text-brand" href="achievements.html">Achievements</a></div></div>
+        <div><p class="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-brand">Organization</p><div class="space-y-3 text-sm text-white/80"><a class="block transition hover:text-brand" href="../index.html#partners">Partners</a><a class="block transition hover:text-brand" href="contact.html">Contact</a></div></div>
+        <div><p class="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-brand">Socials</p><div class="flex flex-wrap gap-3"><a href="https://www.instagram.com/veltrex_esports/" target="_blank" rel="noreferrer" class="flex h-11 w-11 items-center justify-center border border-white/10 bg-white/[0.03] text-white transition hover:-translate-y-1 hover:border-brand/40 hover:text-brand" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a><a href="https://www.youtube.com/@Veltrexesports" target="_blank" rel="noreferrer" class="flex h-11 w-11 items-center justify-center border border-white/10 bg-white/[0.03] text-white transition hover:-translate-y-1 hover:border-brand/40 hover:text-brand" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg></a><a href="https://discord.gg/A6qDDKSdf" target="_blank" rel="noreferrer" class="flex h-11 w-11 items-center justify-center border border-white/10 bg-white/[0.03] text-white transition hover:-translate-y-1 hover:border-brand/40 hover:text-brand" aria-label="Discord"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg></a><a href="https://x.com/VeltrexEsp" target="_blank" rel="noreferrer" class="flex h-11 w-11 items-center justify-center border border-white/10 bg-white/[0.03] text-white transition hover:-translate-y-1 hover:border-brand/40 hover:text-brand" aria-label="X"><span class="text-sm font-black">X</span></a><a href="https://kick.com/veltrexesports" target="_blank" rel="noreferrer" class="flex h-11 w-11 items-center justify-center border border-white/10 bg-white/[0.03] text-white transition hover:-translate-y-1 hover:border-brand/40 hover:text-brand" aria-label="Kick"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12l4 4v12l-4 4H6l-4-4V6l4-4z"/><path d="M10 8v8"/><path d="M14 8v8"/></svg></a><a href="https://www.tiktok.com/@veltrexesports" target="_blank" rel="noreferrer" class="flex h-11 w-11 items-center justify-center border border-white/10 bg-white/[0.03] text-white transition hover:-translate-y-1 hover:border-brand/40 hover:text-brand" aria-label="TikTok"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a></div><p class="mt-6 text-sm text-white/65">Follow VeltRex For Team Updates, Content, Events, And Community News.</p></div>
+      </div>
+      <div class="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs uppercase tracking-[0.24em] text-white/45 sm:flex-row sm:items-center sm:justify-between">
+        <p>&copy; VeltRex Esports</p>
+        <p>Morocco &bull; Esports &bull; Community &bull; Culture</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
